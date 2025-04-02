@@ -1,0 +1,255 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    touch-action: pan-x pan-y;
+}
+[data-tooltip]:hover::after {
+  display: block;
+  position: absolute;
+  content: attr(title);
+  border: 1px solid black;
+  background: #eee;
+  padding: .25em;
+}
+#toolbar {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #f4f4f4;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+#toolbar button {
+    margin: 0 5px;
+    padding: 8px 12px;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#toolbar button:hover {
+    background-color: #3367d6;
+}
+.zoom-controls {
+    display: flex;
+    align-items: center;
+}
+.zoom-level {
+    margin: 0 10px;
+}
+#pdf-container {
+    width: 100%;
+    height: calc(100vh - 60px);
+    overflow: hidden;
+    position: relative;
+    background-color: #525659;
+}
+#pdf-render-container {
+    position: absolute;
+    transform-origin: 0 0;
+}
+#pdf-canvas {
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    display: block;
+}
+#clickable-areas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+.clickable-area {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    pointer-events: auto;
+    cursor: pointer;
+    display: flex;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 2px black;
+}
+.clickable-area div:hover {
+    background-color: rgba(255, 0, 0, 0.4);
+}
+.clickable-area {
+    background-color: rgba(0, 255, 0, 0.4);
+}
+#status {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(255,255,255,0.7);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+#editor-panel {
+    position: fixed;
+    right: 10px;
+    top: 70px;
+    width: 250px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding: 10px;
+    z-index: 200;
+}
+
+.popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vh;
+    height: 100vh;
+}
+
+.outer-popup {
+    width: 100vw;
+    height: 100vw;
+    filter: blur(4px);
+}
+
+.inner-popup {
+    display: grid;
+    position: fixed;
+    top: 0;
+    border-radius: 10px;
+    background-color: white;
+    padding:10px;
+}
+
+#popup-welcome .inner-popup {
+    margin: 10vh 10vw;
+    width: 80vw;
+    height: 80vh;
+}
+
+#popup-room .inner-popup{
+    margin: 10vh 10vw;
+    width: 80vw;
+    height: 80vh;
+    grid-template-rows: 70px 100px 70px auto;
+}
+
+#popup-task .inner-popup{
+    margin: 1vh 0.5vw;
+    width: 98vw;
+    height: 98vh;
+}
+
+.popup-header {
+    position: relative;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.popup-header button {
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+}
+
+.slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.slide {
+    min-width: 200px;
+    padding: 10px 0 5px 0;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.slide h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.slide p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+}
+
+.slide:hover {
+    background-color: #808080;
+}
+
+.table-container {
+    margin-top: 20px;
+    overflow: scroll;
+}
+
+.modern-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.modern-table th, .modern-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.modern-table tr:nth-child(2n){
+    background-color: #E6E6E5
+}
+
+.modern-table tr:hover {
+    background-color: #ADAAA8
+}
+
+.modern-table th {
+    background-color: #f4f4f4;
+}
+
+#editor-panel h3 {
+    margin-top: 0;
+}
+#editor-panel label {
+    display: block;
+    margin-top: 10px;
+}
+#editor-panel input, #editor-panel textarea {
+    width: 100%;
+    margin-bottom: 5px;
+}
+#editor-panel button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#action-panel {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(255,255,255,0.9);
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 300px;
+    max-height: 200px;
+    overflow: auto;
+    z-index: 200;
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" >
+    <title>PDF.js Viewer with Clickable Areas</title>
+    <script src="pdfjs/pdf.mjs" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="toolbar" style="display:none;">
+        <div class="zoom-controls">
+            <button id="zoom-out">-</button>
+            <div class="zoom-level" id="zoom-level">100%</div>
+            <button id="zoom-in">+</button>
+        </div>
+        <button id="reset-view">Reset View</button>
+        <button id="add-area">Add Clickable Area</button>
+        <button id="toggle-areas-visibility">Hide Areas</button>
+        <button id="resizeflag">Enable Dragging/Resizing Areas</button>
+        <button id="export-areas">Export Areas</button>
+        <button id="import-areas">Import Areas</button>
+        <h4 id="coord">Coords: ? x ? y</h4>
+    </div>
+    <div id="pdf-container" style="filter:blur(4px);">
+        <div id="pdf-render-container">
+            <canvas id="pdf-canvas"></canvas>
+            <div id="clickable-areas-container">
+            </div>
+            <div class="popup">
+                
+            </div>
+        </div>
+    </div>
+    <div class="status" id="status"></div>
+    
+    <div id="editor-panel" style="display: none;">
+        <h3>Add Clickable Area</h3>
+        <label for="area-x">X Position:</label>
+        <input type="number" id="area-x" value="100">
+        
+        <label for="area-y">Y Position:</label>
+        <input type="number" id="area-y" value="100">
+        
+        <label for="area-width">Width:</label>
+        <input type="number" id="area-width" value="100">
+        
+        <label for="area-height">Height:</label>
+        <input type="number" id="area-height" value="100">
+        
+        <label for="area-label">Label:</label>
+        <input type="text" id="area-label" value="Area 1">
+        
+        <label for="area-action">Room Name:</label>
+        <textarea id="area-action" rows="4">alert('Clicked on Area 1');</textarea>
+        
+        <button id="save-area">Save Area</button>
+        <button id="cancel-area">Cancel</button>
+    </div>
+    <div id="popup-room" class="popup" style="display: none;"> 
+        <div class="outer-popup" onclick="popupClose(this);"></div>
+        <div class="inner-popup">
+            <div class="popup-header">
+                <h2 id="roomtitle">Room View</h2>
+                <button onclick="popupClose(this)"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="slider" id="AssetorWorkpack">
+            </div>
+            <div class="slider" id="Subcontractor">
+            </div>
+            <!-- Scrollable Table Container -->
+            <div class="table-container">
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                            <th>Task ID</th>
+                            <th>Asset ID</th>
+                            <th>State</th>
+                            <th>Description</th>
+                            <th>Percentage</th>
+                            <th>Total Count</th>
+                        </tr>
+                    </thead>
+                    <tbody id="Taskdata">
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="popup-task" class="popup" style="display: none;"> 
+        <div class="outer-popup" onclick="popupClose(this);"></div>
+        <div class="inner-popup">
+            <div class="popup-header">
+                <div></div>
+                <button onclick="popupClose(this)"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="table-container">
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                            <th>Step Point</th>
+                            <th>Step Action</th>
+                            <th>Type</th>
+                            <th>Answer</th>
+                            <th>IsRequired</th>
+                        </tr>
+                    </thead>
+                    <tbody id="TaskStepdata">
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <div id="popup-welcome" class="popup">
+        <div class="outer-popup"></div>
+        <div class="inner-popup">
+            <div class="popup-header">
+            </div>
+            <div>
+                Welcome, please upload DB File below
+                <input id="fileupload" type="file">Upload DB</input>
+                <button id="start">Start</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="action-panel" style="display: none;">
+        <h3>Action Result</h3>
+        <div id="action-result"></div>
+    </div>
+    <script src="pdf.js"></script>
+    <script src="sqlite3.js" type="module"></script>
+    <script src="script.js" type="module"></script>
+</body>
+</html>
