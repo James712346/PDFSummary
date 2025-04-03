@@ -100,6 +100,28 @@ body {
     z-index: 200;
 }
 
+
+.confetti {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+.confetti div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #EF5A00;
+    animation: fall 3s infinite;
+}
+@keyframes fall {
+    0% { transform: translateY(-10px); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
 .popup {
     position: fixed;
     left: 0;
@@ -122,11 +144,51 @@ body {
     background-color: white;
     padding:10px;
 }
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    color: #ffffff;
+    background-color: #EF5A00;
+    text-decoration: none;
+    border-radius: 5px;
+    border-style: none;
+}
+.button:hover {
+    background-color: #d94a00;
+}
+.file-drop {
+    border: 2px dashed #EF5A00;
+    border-radius: 10px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #EF5A00;
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+    flex-direction: column;
+}
+.file-drop:hover {
+    background-color: #EF5A00;
+    color: #fff;
+}
+.file-drop input[type="file"] {
+    display: none;
+}
+.file-drop label {
+    cursor: pointer;
+}
+.file-name {
+    margin-top: 10px;
+}
 
 #popup-welcome .inner-popup {
-    margin: 10vh 10vw;
-    width: 80vw;
-    height: 80vh;
+    margin: 25vh 25vw;
+    width: 50vw;
+    height: 50vh;
 }
 
 #popup-room .inner-popup{

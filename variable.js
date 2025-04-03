@@ -1,0 +1,20 @@
+// Variables
+let pdfDoc = null;
+let baseScale = 1;
+let canvas = document.getElementById('pdf-canvas');
+let ctx = canvas.getContext('2d');
+let renderContainer = document.getElementById('pdf-render-container');
+renderContainer.currentScale = baseScale;
+renderContainer.lastMoveX = 0;
+renderContainer.lastMoveY = 0;
+let pdfContainer = document.getElementById('pdf-container');
+let clickableAreasContainer = document.getElementById('clickable-areas-container');
+let startX, startY, moveX = 0, moveY = 0;
+let isDragging = null;
+let statusDisplay = document.getElementById('status');
+let clickableAreas = [];
+let areaVisibility = true;
+let originalWidth, originalHeight;
+let resizemoveflag = false;
+let db = null;
+let gsqlite3 = null;

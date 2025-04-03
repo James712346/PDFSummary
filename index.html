@@ -21,8 +21,7 @@
         <button id="add-area">Add Clickable Area</button>
         <button id="toggle-areas-visibility">Hide Areas</button>
         <button id="resizeflag">Enable Dragging/Resizing Areas</button>
-        <button id="export-areas">Export Areas</button>
-        <button id="import-areas">Import Areas</button>
+        <button id="export-areas">Download Database</button>
         <h4 id="coord">Coords: ? x ? y</h4>
     </div>
     <div id="pdf-container" style="filter:blur(4px);">
@@ -122,13 +121,27 @@
     <div id="popup-welcome" class="popup">
         <div class="outer-popup"></div>
         <div class="inner-popup">
-            <div class="popup-header">
+            <div class="confetti">
+                <div style="left: 10%; animation-delay: 0s;"></div>
+                <div style="left: 20%; animation-delay: 0.5s;"></div>
+                <div style="left: 30%; animation-delay: 1s;"></div>
+                <div style="left: 40%; animation-delay: 1.5s;"></div>
+                <div style="left: 50%; animation-delay: 2s;"></div>
+                <div style="left: 60%; animation-delay: 2.5s;"></div>
+                <div style="left: 70%; animation-delay: 3s;"></div>
+                <div style="left: 80%; animation-delay: 3.5s;"></div>
+                <div style="left: 90%; animation-delay: 4s;"></div>
             </div>
-            <div>
+            <img src="images/logo.jpg" style="width:400px;">
+            <h3>
                 Welcome, please upload DB File below
-                <input id="fileupload" type="file">Upload DB</input>
-                <button id="start">Start</button>
+            </h3>
+            <div class="file-drop" id="fileDrop">
+                <label for="fileInput">Drop a file here or click to upload</label>
+                <input type="file" id="fileInput" accept=".db">
+                <div class="file-name" id="fileName"></div>
             </div>
+            <button class="button" id="start">Start</button>
         </div>
     </div>
 
@@ -136,8 +149,11 @@
         <h3>Action Result</h3>
         <div id="action-result"></div>
     </div>
-    <script src="pdf.js"></script>
+    <script src="variable.js"></script>
     <script src="sqlite3.js" type="module"></script>
-    <script src="script.js" type="module"></script>
+    <script src="main.js" type="module"></script>
+    <script src="canvas.js"></script>
+    <script src="area.js"></script>
+    <script src="filedrop.js"></script>
 </body>
 </html>
