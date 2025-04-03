@@ -57,7 +57,6 @@ document.getElementById('start').addEventListener('click', () => {
                 sql: `select * from clickableAreas`,
                 callback: (row) => {
                     clickableAreas.push(row)
-                    updateClickableArea();
                 },
                 rowMode:'object'
             })
