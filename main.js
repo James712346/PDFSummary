@@ -176,40 +176,6 @@ document.getElementById('export-areas').addEventListener('click', function () {
     }
 });
 
-// Import areas from JSON
-document.getElementById('import-areas').addEventListener('click', function () {
-    const fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.accept = 'application/json';
-
-    fileInput.addEventListener('change', function (e) {
-        const file = e.target.files[0];
-        if (!file) return;
-
-        const reader = new FileReader();
-        reader.onload = function (event) {
-            try {
-                const importedAreas = JSON.parse(event.target.result);
-                if (Array.isArray(importedAreas)) {
-                    clickableAreas = importedAreas;
-                    updateClickableAreas();
-                    statusDisplay.textContent = `Imported ${importedAreas.length} areas successfully`;
-                } else {
-                    throw new Error('Invalid format: Expected array of areas');
-                }
-            } catch (error) {
-                statusDisplay.textContent = `Error importing areas: ${error.message}`;
-                console.error('Error importing areas:', error);
-            }
-        };
-
-        reader.readAsText(file);
-    });
-
-    fileInput.click();
-});
-
-
 async function fetchAndImportAreas(url) {
     try {
         const response = await fetch(url);
