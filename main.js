@@ -1,11 +1,6 @@
 // Set up PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = './pdf.worker.mjs';
 
-
-const uid = function () {
-    return Date.now().toString(36) + Math.random().toString(36).substr(2);
-}
-
 document.getElementById('start').addEventListener('click', () => {
     const fileElement = document.getElementById('fileInput');
     const file = fileElement.files[0];
