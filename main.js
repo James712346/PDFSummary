@@ -130,7 +130,7 @@ document.getElementById('export-areas').addEventListener('click', function () {
             const result = db.exec({sql:checkQuery, callback:(row) =>{
                 if (row[0] === 0) {
                     const insertQuery = `
-                        INSERT INTO clickableAreas (id, x, y, width, height, label, room, scale)
+                        INSERT OR REPLACE INTO clickableAreas (id, x, y, width, height, label, room, scale)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                     `;
                     db.exec({sql:insertQuery, bind:[area.id, area.x, area.y, area.width, area.height, area.label, area.room, area.scale]});
