@@ -101,4 +101,4 @@ document.getElementById('save-area').addEventListener('click', function() {
 document.getElementById('cancel-area').addEventListener('click', function() {
     document.getElementById('editor-panel').style.display = 'none';
 });
-
+window.updateClickableArea = updateClickableArea;
