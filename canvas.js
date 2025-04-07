@@ -99,7 +99,7 @@ document.addEventListener('mouseup', function() {
                 isDragging.object.width = parseFloat(isDragging.style.width);
                 isDragging.object.height = parseFloat(isDragging.style.height);
             }
-            updateClickableArea(isDragging.object)
+            updateClickableAreas(isDragging.object)
         } else {
             isDragging.lastMoveX = moveX;
             isDragging.lastMoveY = moveY;
